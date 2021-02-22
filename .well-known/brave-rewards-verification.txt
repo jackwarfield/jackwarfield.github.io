@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: jackwarfield.com
+Token: 3c95313a52c2ec30de9351fdf1ed7408bbaf6eea7776572abc79f2964d52323e
