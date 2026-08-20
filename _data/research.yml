@@ -1,0 +1,108 @@
+# ---------------------------------------------------------------------------
+# Research projects, in the order they appear on /research/.
+#
+#   title    Short project name.
+#   tags     Optional list of short labels.
+#   summary  One or more paragraphs. Plain HTML is allowed (links, <i>, <b>).
+#            Use the "|" block style below and indent the text.
+#   links    - {label: ..., url: ...}
+#
+# To reorder the page, move a block up or down. To retire a project, delete it
+# or comment it out -- nothing else needs to change.
+# ---------------------------------------------------------------------------
+
+- title: The motions of Local Group dwarf galaxies
+  tags: [Dwarf galaxies, Astrometry, Dark matter]
+  summary: |
+    The dwarf galaxies orbiting the Milky Way and M31 are the smallest, most
+    dark-matter-dominated systems we can still resolve into individual stars.
+    How they move tells us about the mass and internal structure of the dark
+    matter halos they live in, which is exactly where competing cosmological
+    models make different predictions.
+
+    The catch is that these motions are tiny — tens of microarcseconds per year
+    — so the measurement is as much about controlling systematics as it is
+    about the data. My recent work measures the proper motion of the ultra-faint
+    dwarf Draco II from HST imaging using several independent reference frames
+    and methods, so that the reference frame itself can be tested rather than
+    assumed.
+  links:
+    - label: Draco II proper motion (2025)
+      url: https://ui.adsabs.harvard.edu/abs/2025arXiv251024849W/abstract
+
+- title: "HubPUG: proper motions from HST anchored to Gaia"
+  tags: [Software, HST, Gaia]
+  summary: |
+    <b>HubPUG</b> measures proper motions for resolved stellar systems — dwarf
+    galaxies, globular clusters, stellar streams — that have two epochs of HST
+    imaging, using Gaia stars in the foreground as the reference frame instead
+    of distant background galaxies.
+
+    That choice does two things. It improves on Gaia-only proper motions for
+    Milky Way satellites, and it opens up systems that have few or no Gaia stars
+    of their own, such as ultra-faint dwarfs and the distant satellites of M31.
+  links:
+    - label: Paper (MNRAS 2023)
+      url: https://ui.adsabs.harvard.edu/abs/2023MNRAS.519.1189W/abstract
+    - label: Code on GitHub
+      url: https://github.com/jackwarfield/HubPUG
+
+- title: Cross-observatory astrometry with HST and JWST
+  tags: [JWST, HST, Roman, Systematics]
+  summary: |
+    HST has been imaging the Local Group for more than thirty years. JWST has
+    been at it for three, and Roman has not started. Tying those archives
+    together gives time baselines no single observatory can match — but only if
+    we understand what happens to an astrometric measurement when the two epochs
+    come from different telescopes, different detectors, and different
+    distortion solutions.
+
+    Using the JWST ERS data together with my own HST Cycle 31 and JWST Cycle 2
+    programs, I am characterising those cross-observatory systematics directly.
+    Getting this right is a prerequisite for using the HST archive as the first
+    epoch for anything JWST and Roman observe.
+  links:
+    - label: "HST Cycle 31, ID #17473"
+      url: https://ui.adsabs.harvard.edu/abs/2023hst..prop17473W/abstract
+    - label: "JWST Cycle 2, ID #4570"
+      url: https://ui.adsabs.harvard.edu/abs/2023jwst.prop.4570W/abstract
+
+- title: JWST Early Release Science — Resolved Stellar Populations
+  tags: [JWST, Photometry, DOLPHOT]
+  summary: |
+    I am a member of the <a href="https://ers-stars.github.io">JWST Early
+    Release Science Resolved Stellar Populations</a> team, which set out to
+    build the tools and best practices for reducing, analysing, and
+    interpreting JWST data of resolved stars. Our Cycle 1 data covered the
+    Milky Way ultra-faint dwarf Draco II, the isolated Local Group dwarf WLM,
+    and the globular cluster M92.
+
+    My contribution was a set of photometric criteria for telling stars from
+    background galaxies in NIRCam catalogues produced with
+    <a href="http://americano.dolphinsim.com/dolphot/">DOLPHOT</a> — an
+    unglamorous but load-bearing step for any faint-end science with these data.
+  links:
+    - label: Star–galaxy separation note (RNAAS 2023)
+      url: https://ui.adsabs.harvard.edu/abs/2023arXiv230107218W/abstract
+    - label: ERS programme site
+      url: https://ers-stars.github.io
+
+- title: Stellar ages across the Milky Way
+  tags: [Asteroseismology, APOGEE, K2, Galactic archaeology]
+  summary: |
+    Before I worked on dwarf galaxies, I worked on the ages of red giants.
+    Combining APOGEE spectroscopy with K2 asteroseismology yields masses, and
+    therefore ages, for thousands of giants spread across the Galaxy — a much
+    wider footprint than <i>Kepler</i>'s single field.
+
+    In the APO-K2 catalog I derived ages for the red giant branch sample, and in
+    earlier work identified an intermediate-age, alpha-rich population in K2
+    that is difficult to produce in standard chemical evolution models. The age
+    tables are public.
+  links:
+    - label: APO-K2 II — stellar ages (AJ 2024)
+      url: https://ui.adsabs.harvard.edu/abs/2024AJ....167..208W/abstract
+    - label: Age tables
+      url: https://github.com/jackwarfield/APO-K2/tree/ages/ages
+    - label: Intermediate-age alpha-rich population (AJ 2021)
+      url: https://ui.adsabs.harvard.edu/abs/2021AJ....161..100W/abstract

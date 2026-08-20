@@ -1,11 +1,22 @@
 ---
-layout: default
-title: Jack's Blog
+layout: page
+title: Blog
+lede: Occasional notes.
 ---
-	<h1>{{ page.title }}</h1>
-	<ul class="posts">
 
-	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-	  {% endfor %}
-	</ul>
+{% if site.posts.size == 0 %}
+  <p class="empty">Nothing here yet.</p>
+{% else %}
+  <ul class="posts">
+    {% for post in site.posts %}
+    <li>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<p style="margin-top:2.5rem;font-size:0.9rem">
+  <a href="/blog/atom.xml">Atom feed</a>
+</p>

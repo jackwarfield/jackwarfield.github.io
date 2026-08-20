@@ -1,0 +1,14 @@
+# Everything on the /otherpages/ page. Add a block to add a link.
+#   title, url, and an optional one-line note.
+
+- title: ADS — all of my publications
+  url: "https://ui.adsabs.harvard.edu/search/q=((author%3A(%22Warfield%2C%20Jack%22))%20AND%20year%3A2018-9999)&sort=date%20desc%2C%20bibcode%20desc"
+  #note: The authoritative, always-current list.
+
+- title: GitHub
+  url: https://github.com/jackwarfield
+  #note: Code.
+
+- title: College football computer rankings
+  url: https://github.com/jackwarfield/cfb_rankings
+  note: Resume-based college football rankings, rerun automatically after almost every game.

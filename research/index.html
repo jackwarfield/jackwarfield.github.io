@@ -1,0 +1,30 @@
+---
+layout: page
+title: Research
+---
+
+<div class="research-list">
+  {% for project in site.data.research %}
+  <article class="research-item">
+    <h2>{{ project.title }}</h2>
+
+    {% if project.tags %}
+    <ul class="tags">
+      {% for tag in project.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+
+    {{ project.summary | markdownify }}
+
+    {% if project.links %}
+    <ul class="linkrow">
+      {% for link in project.links %}
+        <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+
+<p><a href="/publications/">Full publication list &rarr;</a></p>

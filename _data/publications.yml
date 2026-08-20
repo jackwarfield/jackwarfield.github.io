@@ -1,0 +1,293 @@
+# ---------------------------------------------------------------------------
+# Publications
+#
+# To add a paper by hand, copy an entry below and edit it. Only `title`,
+# `authors`, `year`, and `category` are required. Everything else is optional
+# and is simply omitted from the page if you leave it out.
+#
+#   title      Paper title, no trailing period.
+#   authors    List of names in order. Any name containing the string set by
+#              `author_highlight` in _config.yml (default "Warfield") is
+#              rendered in bold automatically.
+#   year       Publication year.
+#   journal    Journal abbreviation, e.g. ApJ, AJ, MNRAS, ApJS.
+#   volume     Volume number.
+#   page       Page or article number.
+#   preprint   arXiv identifier, e.g. 2510.24849.
+#   status     Free text badge: "accepted to ApJ", "submitted to AJ", etc.
+#   bibcode    ADS bibcode. Used to build the ADS link.
+#   doi        DOI, if you want a publisher link as well.
+#   links      Extra links: - {label: Code, url: "..."}
+#   category   Which section it appears in. Must match an id under
+#              `categories` below.
+#
+# Or run:  python3 scripts/add_publication.py 2025arXiv251024849W
+# which fetches the metadata from ADS and appends a filled-in entry for you.
+# ---------------------------------------------------------------------------
+
+categories:
+  - id: first
+    title: First-author and highlighted contributions
+  - id: observing
+    title: Highlighted observing programs
+    footer_text: Link to full list
+    footer_url: "https://ui.adsabs.harvard.edu/search/filter_bibstem_facet_fq_bibstem_facet=OR&filter_bibstem_facet_fq_bibstem_facet=bibstem_facet%3A%22jwst.prop%22&filter_bibstem_facet_fq_bibstem_facet=bibstem_facet%3A%22hst..prop%22&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq=%7B!type%3Daqp%20v%3D%24fq_bibstem_facet%7D&fq_bibstem_facet=(bibstem_facet%3A%22jwst.prop%22%20OR%20bibstem_facet%3A%22hst..prop%22)&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&p_=0&q=author%3A%22Warfield%2C%20Jack%22%20year%3A2017-&sort=date%20desc%2C%20bibcode%20desc"
+  - id: other
+    title: Other publications
+
+# Newest first within each category.
+entries:
+  # --- First author and highlighted --------------------------------------
+  - title: The Proper Motion of Draco II with HST using Multiple Reference Frames and Methodologies
+    authors: ["J. T. Warfield", "K. A. McKinnon", "S. T. Sohn", "et al."]
+    year: 2025
+    journal: ApJ
+    volume: 998
+    page: 3
+    preprint: "2510.24849"
+    doi: 10.3847/1538-4357/ae29f2
+    bibcode: 2026ApJ...998....3W
+    category: first
+
+  - title: The APO-K2 Catalog. II. Accurate Stellar Ages for Red Giant Branch Stars Across the Milky Way
+    authors: ["J. T. Warfield", "J. C. Zinn", "J. Schonhut-Stasik", "et al."]
+    year: 2024
+    journal: AJ
+    volume: 167
+    page: 208
+    preprint: "2403.16250"
+    doi: 10.3847/1538-3881/ad33bb
+    bibcode: 2024AJ....167..208W
+    category: first
+    links:
+      - label: Age tables
+        url: https://github.com/jackwarfield/APO-K2/tree/ages/ages
+
+  - title: The APO-K2 Catalog. I. 7,673 Red Giants with Fundamental Stellar Parameters from APOGEE DR17 Spectroscopy and K2-GAP Asteroseismology
+    authors: ["J. Schonhut-Stasik", "J. C. Zinn", "K. G. Stassun", "et al. (incl. J. T. Warfield)"]
+    year: 2024
+    journal: AJ
+    volume: 167
+    page: 50
+    preprint: "2304.10654"
+    doi: 10.3847/1538-3881/ad0b13
+    bibcode: 2024AJ....167...50S
+    category: first
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. III. Photometric Star-Galaxy Separations for NIRCam
+    authors: ["J. T. Warfield", "H. Richstein", "N. Kallivayalil", "et al."]
+    year: 2023
+    journal: Res. Notes AAS
+    volume: 7
+    page: 23
+    preprint: "2301.07218"
+    doi: 10.3847/2515-5172/acbb72
+    bibcode: 2023RNAAS...7...23W
+    category: first
+
+  - title: "HubPUG: Proper Motions for Local Group Dwarfs observed with HST utilizing Gaia as a Reference Frame"
+    authors: ["J. T. Warfield", "N. Kallivayalil", "P. Zivick", "et al."]
+    year: 2023
+    journal: MNRAS
+    volume: 519
+    page: 1189
+    preprint: "2209.02751"
+    doi: 10.1093/mnras/stac3647
+    bibcode: 2023MNRAS.519.1189W
+    category: first
+    links:
+      - label: Code
+        url: https://github.com/jackwarfield/HubPUG
+
+  - title: An Intermediate-age Alpha-rich Galactic Population in K2
+    authors: ["J. T. Warfield", "J. C. Zinn", "M. H. Pinsonneault", "J. A. Johnson", "et al."]
+    year: 2021
+    journal: AJ
+    volume: 161
+    page: 100
+    preprint: "2102.03377"
+    doi: 10.3847/1538-3881/abd39d
+    bibcode: 2021AJ....161..100W
+    category: first
+
+  - title: Optical and electrical properties of Sn-doped ZnO single crystals
+    authors: ["M. S. Haseman", "P. Saadaktia", "J. T. Warfield", "J. Lawrence",
+              "A. Harnandez", "G. E. Jellison", "L. A. Boatner", "F. A. Selim"]
+    year: 2018
+    journal: Journal of Electronic Materials
+    volume: 47
+    page: 1497
+    doi: 10.1007/s11664-017-5942-6
+    bibcode: 2018JEMat..47.1497H
+    category: first
+
+  # --- Observing programs -------------------------------------------------
+  - title: "Moving Beyond the Milky Way: Enabling Cross-Observatory Proper Motion Determinations with HST and JWST"
+    authors: ["P.I.: J. T. Warfield"]
+    year: 2023
+    category: observing
+    links:
+      - label: "HST Cycle 31, ID #17473"
+        url: https://ui.adsabs.harvard.edu/abs/2023hst..prop17473W/abstract
+      - label: "JWST Cycle 2, ID #4570"
+        url: https://ui.adsabs.harvard.edu/abs/2023jwst.prop.4570W/abstract
+
+  # --- Co-authored --------------------------------------------------------
+  - title: "The abundance and properties of the lowest luminosity dwarf galaxies around the Milky Way: Insights from Semi-Analytic Models"
+    authors: ["N. Ahvazi", "A. B. Pace", "C. T. Garling", "et al."]
+    year: 2025
+    preprint: "2511.15808"
+    status: submitted to OJAp
+    doi: 10.48550/arXiv.2511.15808
+    bibcode: 2025arXiv251115808A
+    category: other
+
+  - title: Measuring Resolved Star Formation Histories from High-precision Color–Magnitude Diagrams with StarFormationHistories.jl
+    authors: ["C. T. Garling", "N. Kallivayalil", "K. B. W. McQuinn", "et al."]
+    year: 2025
+    journal: ApJS
+    volume: 277
+    page: 61
+    preprint: "2407.19534"
+    doi: 10.3847/1538-4365/adbb64
+    bibcode: 2025ApJS..277...61G
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. VIII. The Spatially Resolved Star Formation History of WLM
+    authors: ["R. E. Cohen", "K. B. W. McQuinn", "A. Savino", "et al."]
+    year: 2025
+    journal: ApJ
+    volume: 981
+    page: 153
+    preprint: "2502.13887"
+    doi: 10.3847/1538-4357/adb61d
+    bibcode: 2025ApJ...981..153C
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. VII. Stress Testing the NIRCam Exposure Time Calculator
+    authors: ["A. Savino", "M. Gennaro", "A. E. Dolphin", "et al."]
+    year: 2024
+    journal: ApJ
+    volume: 970
+    page: 36
+    preprint: "2405.17547"
+    doi: 10.3847/1538-4357/ad4e2f
+    bibcode: 2024ApJ...970...36S
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. VI. Identifying Evolved Stars in Nearby Galaxies
+    authors: ["M. L. Boyer", "G. Pastorelli", "L. Girardi", "et al."]
+    year: 2024
+    journal: ApJ
+    volume: 973
+    page: 120
+    preprint: "2401.14889"
+    doi: 10.3847/1538-4357/ad6449
+    bibcode: 2024ApJ...973..120B
+    category: other
+
+  - title: "Deep Hubble Space Telescope Photometry of LMC and Milky Way Ultra-Faint Dwarfs: A Careful Look into the Magnitude-Size Relation"
+    authors: ["H. Richstein", "N. Kallivayalil", "J. D. Simon", "et al."]
+    year: 2024
+    journal: ApJ
+    volume: 967
+    page: 72
+    preprint: "2402.08731"
+    doi: 10.3847/1538-4357/ad393c
+    bibcode: 2024ApJ...967...72R
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. V. DOLPHOT Stellar Photometry for NIRCam and NIRISS
+    authors: ["D. R. Weisz", "A. E. Dolphin", "A. Savino", "et al."]
+    year: 2024
+    journal: ApJS
+    volume: 271
+    page: 47
+    preprint: "2402.03504"
+    doi: 10.3847/1538-4365/ad2600
+    bibcode: 2024ApJS..271...47W
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. IV. The Star Formation History of the Local Group Galaxy WLM
+    authors: ["K. B. W. McQuinn", "M. Newman", "A. Savino", "et al."]
+    year: 2024
+    journal: ApJ
+    volume: 961
+    page: 16
+    preprint: "2312.03060"
+    doi: 10.3847/1538-4357/ad1105
+    bibcode: 2024ApJ...961...16M
+    category: other
+
+  - title: The Hubble Space Telescope Survey of M31 Satellite Galaxies. III. Calibrating the Horizontal Branch as an Age Indicator for Nearby Galaxies
+    authors: ["C. Jennings", "A. Savino", "D. Weisz", "et al."]
+    year: 2023
+    preprint: "2311.16397"
+    status: submitted to AJ
+    doi: 10.48550/arXiv.2311.16397
+    bibcode: 2023arXiv231116397J
+    category: other
+
+  - title: "NANCY: Next-generation All-sky Near-infrared Community surveY"
+    authors: ["J. J. Han", "A. Dey", "A. M. Price-Whelan", "et al."]
+    year: 2023
+    preprint: "2306.11784"
+    status: Roman Core Community Survey white paper
+    doi: 10.48550/arXiv.2306.11784
+    bibcode: 2023arXiv230611784H
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. II. Survey Overview
+    authors: ["D. R. Weisz", "K. B. W. McQuinn", "A. Savino", "et al."]
+    year: 2023
+    journal: ApJS
+    volume: 268
+    page: 15
+    preprint: "2301.04659"
+    doi: 10.3847/1538-4365/acdcfd
+    bibcode: 2023ApJS..268...15W
+    category: other
+
+  - title: Structural parameters and possible association of the Ultra-Faint Dwarfs Pegasus III and Pisces II from deep Hubble Space Telescope photometry
+    authors: ["H. Richstein", "E. Patel", "N. Kallivayalil", "et al."]
+    year: 2022
+    journal: ApJ
+    volume: 933
+    page: 217
+    preprint: "2204.01917"
+    doi: 10.3847/1538-4357/ac7226
+    bibcode: 2022ApJ...933..217R
+    category: other
+
+  - title: "The Seventeenth Data Release of the Sloan Digital Sky Surveys: Complete Release of MaNGA, MaStar, and APOGEE-2 Data"
+    authors: ["Abdurro'uf", "K. Accetta", "C. Aerts", "et al."]
+    year: 2022
+    journal: ApJS
+    volume: 259
+    page: 35
+    preprint: "2112.02026"
+    doi: 10.3847/1538-4365/ac4414
+    bibcode: 2022ApJS..259...35A
+    category: other
+
+  - title: "The K2 Galactic Archaeology Program Data Release 3: Age-abundance patterns in C1-C8, C10-C18"
+    authors: ["J. C. Zinn", "D. Stello", "Y. Elsworth", "et al."]
+    year: 2022
+    journal: ApJ
+    volume: 926
+    page: 191
+    preprint: "2108.05455"
+    doi: 10.3847/1538-4357/ac2c83
+    bibcode: 2022ApJ...926..191Z
+    category: other
+
+  - title: "The K2 Galactic Archaeology Program Data Release 2: Asteroseismic Results From Campaigns 4, 6, & 7"
+    authors: ["J. C. Zinn", "D. Stello", "Y. Elsworth", "et al."]
+    year: 2020
+    journal: ApJS
+    volume: 251
+    page: 23
+    preprint: "2012.04051"
+    doi: 10.3847/1538-4365/abbee3
+    bibcode: 2020ApJS..251...23Z
+    category: other

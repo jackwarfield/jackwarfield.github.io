@@ -1,4 +1,79 @@
+# ---------------------------------------------------------------------------
+# Site-wide settings.
+#
+# Almost everything that appears in more than one place on the site lives here.
+# Change a value below and it updates everywhere. Jekyll does NOT pick up edits
+# to this file while `jekyll serve` is running -- restart the server after
+# editing it.
+# ---------------------------------------------------------------------------
+
 name: Jack Warfield
+title: Jack Warfield
+role: Postdoctoral Scholar
+affiliation: Department of Astronomy, University of California, Berkeley
+tagline: >-
+  I study the dynamics and stellar populations of dwarf galaxies in the
+  Local Group using observations from observatories such as HST, JWST, Gaia,
+  and Euclid.
+description: >-
+  Jack Warfield is a postdoctoral researcher in the Department of Astronomy at
+  UC Berkeley, working on understanding the dynamics and stellar populations of
+  Local Group dwarf galaxies.
+
+url: https://jackwarfield.com
+email: warfield@berkeley.edu
+photo: /images/jack-at-aas.jpg
+photo_alt: Jack Warfield speaking at AAS 241 in Seattle, January 2023.
+cv: /docs/JackWarfield_CV_Aug2026.pdf
+
+# Short facts shown on the home page. Add, remove, or reorder freely.
+facts:
+  - label: Location
+    value: Berkeley, CA
+  - label: Research Interests
+    value: The local universe, dwarf galaxies, galaxy dynamics, stellar populations
+  - label: Other Interests
+    value: College football, climbing
+
+# External profiles. Comment out or delete any you do not want in the footer.
+profiles:
+  ads: https://ui.adsabs.harvard.edu/search/q=((author%3A(%22Warfield%2C%20Jack%22))%20AND%20year%3A2018-9999)&sort=date%20desc%2C%20bibcode%20desc
+  github: https://github.com/jackwarfield
+  # orcid: https://orcid.org/0000-0000-0000-0000
+  # scholar: https://scholar.google.com/citations?user=XXXXXXX
+
+# Top navigation. Order here is the order on the page.
+nav:
+  - title: About
+    url: /about/
+  #- title: Research
+  #  url: /research/
+  - title: Publications
+    url: /publications/
+  - title: CV
+    url: /docs/JackWarfield_CV_Aug2026.pdf
+  - title: Links
+    url: /otherpages/
+  - title: Blog
+    url: /blog/
+
+# The string used to bold your own name in publication author lists.
+# Any author entry containing this substring is rendered in bold.
+author_highlight: Warfield
+
+# --- Jekyll internals -------------------------------------------------------
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
 include: [".well-known"]
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - scripts/
+  - README.md
+  - _to_delete/

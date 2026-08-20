@@ -1,15 +1,33 @@
 ---
 layout: default
-title: Jack Warfield
+title: Home
 ---
-<div class="blurb">
-	<h2>Hi! I'm Jack Warfield!</h1>
-	<h3><a href='https://github.com/jackwarfield/APO-K2/tree/ages/ages'>Click here for the age tables from my APO-K2 paper.</a></h2>
-	<img src='images/jack-at-aas.jpg' style="width:300px;height:300px;" alt="Me speaking at AAS 241 in Seattle. January, 2023.">
-    
-	<p>
-		Location: University of California, Berkeley <br>
-		Research Interests: the local universe, dwarf galaxies, galaxy dynamics, stellar populations. <br>
-		Other Interests: college football, climbing.
-	</p>
-</div><!-- /.blurb -->
+<section class="hero">
+  <img class="hero-photo" src="{{ site.photo }}" alt="{{ site.photo_alt }}" width="380" height="380">
+
+  <div>
+    <h1>{{ site.name }}</h1>
+    <p class="role">{{ site.role }}<br>{{ site.affiliation }}</p>
+    <p class="tagline">{{ site.tagline }}</p>
+
+    <div class="actions">
+      <!--<a class="btn btn-primary" href="/research/">Research</a>-->
+      <a class="btn" href="/publications/">Publications</a>
+      <a class="btn" href="{{ site.cv }}">CV (PDF)</a>
+      <a class="btn" href="mailto:{{ site.email }}">Email</a>
+    </div>
+  </div>
+</section>
+
+<dl class="facts">
+  {% for fact in site.facts %}
+  <div>
+    <dt>{{ fact.label }}</dt>
+    <dd>{{ fact.value }}</dd>
+  </div>
+  {% endfor %}
+</dl>
+
+<!--<div class="callout">
+  <p><a href="https://github.com/jackwarfield/APO-K2/tree/ages/ages">Looking for the age tables from the APO-K2 paper? They are here &rarr;</a></p>
+</div>-->

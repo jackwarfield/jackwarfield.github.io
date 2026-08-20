@@ -1,12 +1,13 @@
 ---
-layout: default
-title: Jack Warfield
+layout: page
+title: Other pages and links
 ---
-<div class="blurb">
-	<h2>Links</h2>
-	<p>
-	<a href='https://ui.adsabs.harvard.edu/search/q=((author%3A(%22Warfield%2C%20Jack%22))%20AND%20year%3A2018-9999)'>ADS</a>
-	<br>
-	<a href='https://github.com/jackwarfield/cfb_rankings'>College Football Computer Rankings</a>
-	</p>
-</div><!-- /.blurb -->
+
+<ul class="link-list">
+  {% for link in site.data.links %}
+  <li>
+    <a href="{{ link.url }}">{{ link.title }}</a>
+    {% if link.note %}<span class="note">{{ link.note }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

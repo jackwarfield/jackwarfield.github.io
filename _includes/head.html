@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% assign page_title = page.title | default: site.title %}
+<title>{% if page.url == "/" %}{{ site.title }} — {{ site.role }}{% else %}{{ page_title }} · {{ site.title }}{% endif %}</title>
+
+{% assign og_title = page.title | default: site.title %}
+{% if page.url == "/" %}{% assign og_title = site.title %}{% endif %}
+{% assign page_desc = page.description | default: site.description %}
+<meta name="description" content="{{ page_desc | strip_newlines }}">
+<meta name="author" content="{{ site.name }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ page_desc | strip_newlines }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}{{ site.photo }}">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} — Blog" href="/blog/atom.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8C%3C/text%3E%3C/svg%3E">
+
+<!-- Applies the saved theme before first paint so the page never flashes. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
