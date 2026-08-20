@@ -20,7 +20,14 @@
 <meta property="og:image" content="{{ site.url }}{{ site.photo }}">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="/css/main.css">
+{%- comment -%}
+  The stylesheet lives at a fixed URL but its contents change, so a browser
+  will happily keep serving the copy it cached from an older version of the
+  site -- new markup, old styles. site.time is the build time, so this query
+  string changes on every deploy and never in between.
+{%- endcomment -%}
+{% assign css_version = site.time | date: "%Y%m%d%H%M%S" %}
+<link rel="stylesheet" href="/css/main.css?v={{ css_version }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} — Blog" href="/blog/atom.xml">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8C%3C/text%3E%3C/svg%3E">
 
