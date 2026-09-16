@@ -53,6 +53,12 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:var
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink2);margin:4px 0 6px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
 svg{max-width:100%;height:auto;display:block}
+.mapwrap{position:relative}
+#map{cursor:grab;touch-action:none;user-select:none}
+#map.dragging{cursor:grabbing}
+.mapctl{position:absolute;top:6px;right:6px;display:flex;gap:4px}
+.mapctl button{padding:2px 8px;font-size:13px;line-height:1.4;min-width:28px}
+.maphint{position:absolute;left:8px;bottom:4px;font-size:11px;color:var(--muted);pointer-events:none}
 .tablebox{overflow-x:auto;margin-top:16px}
 table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
 th,td{padding:5px 8px;border-bottom:1px solid var(--line2);text-align:left;white-space:nowrap;vertical-align:top}
@@ -129,7 +135,9 @@ td.name{font-weight:500}
     <div class="panel mapbox">
       <h2>Sky distribution (Mollweide, equatorial)</h2>
       <div class="legend"><span><i style="background:var(--hst)"></i>HST only</span><span><i style="background:var(--jwst)"></i>JWST only</span><span><i style="background:var(--both)"></i>HST + JWST</span><span><i style="background:var(--none)"></i>no HST/JWST</span><span><i style="background:color-mix(in srgb,var(--pm-pub) 30%,transparent);border:1px solid var(--pm-pub)"></i>Roman HLWAS</span><span><i style="background:color-mix(in srgb,var(--pm-cand) 30%,transparent);border:1px solid var(--pm-cand)"></i>Euclid Wide RoI (approx.)</span></div>
-      <svg id="map" viewBox="0 0 900 470" role="img" aria-label="Sky map of Local Volume galaxies"></svg>
+      <div class="mapwrap"><svg id="map" viewBox="0 0 900 470" role="img" aria-label="Sky map of Local Volume galaxies"></svg>
+        <div class="mapctl"><button id="zin" title="Zoom in" aria-label="Zoom in">+</button><button id="zout" title="Zoom out" aria-label="Zoom out">−</button><button id="zreset" title="Reset view">Reset</button></div>
+        <div class="maphint">scroll to zoom · drag to pan · double-click to reset</div></div>
     </div>
     <div class="panel tablebox">
       <table id="tab"><thead><tr>
@@ -299,12 +307,53 @@ function gal2eq(l, b){ // J2000 galactic -> equatorial (deg)
 function drawPoints(visible){
   const col = {hst: 'var(--hst)', jwst: 'var(--jwst)', both: 'var(--both)', none: 'var(--none)'};
   $('pts').innerHTML = DATA.filter(r => r.ra != null).map(r => { const p = moll(r.ra, r.dec); const c = imgClass(r); const on = visible.has(r.key);
-    return `<circle data-k="${r.key}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${on ? (c === 'none' ? 2.6 : 3.4) : 1.6}" fill="${col[c]}" fill-opacity="${on ? .9 : .25}" stroke="var(--panel)" stroke-width=".8"${r.key === selKey ? ' stroke="var(--ink)" stroke-width="2" r="6"' : ''}/>`; }).join('');
+    const sel = r.key === selKey; const r0 = sel ? 6 : on ? (c === 'none' ? 2.6 : 3.4) : 1.6;
+    return `<circle data-k="${r.key}" data-r="${r0}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${(r0 / view.k).toFixed(2)}" fill="${col[c]}" fill-opacity="${on ? .9 : .25}" stroke="${sel ? 'var(--ink)' : 'var(--panel)'}" stroke-width="${sel ? 2 : .8}" vector-effect="non-scaling-stroke"/>`; }).join('');
 }
+
+// ---------- zoom & pan (viewBox manipulation) ----------
+const view = {x: 0, y: 0, w: W, h: H, k: 1};
+function applyView(){
+  const svg = $('map');
+  svg.setAttribute('viewBox', `${view.x} ${view.y} ${view.w} ${view.h}`);
+  view.k = W / view.w;
+  svg.querySelectorAll('#pts circle').forEach(c => c.setAttribute('r', (parseFloat(c.dataset.r) / view.k).toFixed(2)));
+  svg.querySelectorAll('text').forEach(t => t.setAttribute('font-size', (10 / view.k).toFixed(2)));
+}
+function svgPoint(e){ const svg = $('map'); const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); }
+function zoomAt(factor, px, py){ // px,py in SVG user units; keep that point fixed
+  const k = Math.min(Math.max(view.k * factor, 1), 40) / view.k;
+  view.w /= k; view.h /= k; view.x = px - (px - view.x) / k; view.y = py - (py - view.y) / k;
+  if(view.w >= W){ view.x = 0; view.y = 0; view.w = W; view.h = H; }
+  applyView();
+}
+function resetView(){ view.x = 0; view.y = 0; view.w = W; view.h = H; applyView(); }
+$('map').addEventListener('wheel', e => { e.preventDefault(); const p = svgPoint(e); zoomAt(e.deltaY < 0 ? 1.25 : 0.8, p.x, p.y); }, {passive: false});
+$('zin').addEventListener('click', () => zoomAt(1.5, view.x + view.w / 2, view.y + view.h / 2));
+$('zout').addEventListener('click', () => zoomAt(1 / 1.5, view.x + view.w / 2, view.y + view.h / 2));
+$('zreset').addEventListener('click', resetView);
+$('map').addEventListener('dblclick', e => { e.preventDefault(); resetView(); });
+let drag = null;
+$('map').addEventListener('pointerdown', e => { if(e.button !== 0) return; drag = {sx: e.clientX, sy: e.clientY, vx: view.x, vy: view.y, moved: false}; $('map').setPointerCapture(e.pointerId); });
+$('map').addEventListener('pointermove', e => {
+  if(!drag) return;
+  const svg = $('map'); const scale = view.w / svg.getBoundingClientRect().width;   // user units per CSS px
+  const dx = (e.clientX - drag.sx) * scale, dy = (e.clientY - drag.sy) * scale;
+  if(Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) > 3){ drag.moved = true; svg.classList.add('dragging'); tip.style.display = 'none'; }
+  if(drag.moved){ view.x = drag.vx - dx; view.y = drag.vy - dy; applyView(); }
+});
+const endDrag = e => { if(!drag) return; if(drag.moved) suppressClick = true; drag = null; $('map').classList.remove('dragging'); };
+$('map').addEventListener('pointerup', endDrag); $('map').addEventListener('pointercancel', endDrag);
+let suppressClick = false;
+// pinch zoom on touch
+let pinch = null;
+$('map').addEventListener('touchstart', e => { if(e.touches.length === 2){ pinch = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); drag = null; } }, {passive: true});
+$('map').addEventListener('touchmove', e => { if(pinch && e.touches.length === 2){ const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); const mid = svgPoint({clientX: (e.touches[0].clientX + e.touches[1].clientX) / 2, clientY: (e.touches[0].clientY + e.touches[1].clientY) / 2}); zoomAt(d / pinch, mid.x, mid.y); pinch = d; } }, {passive: true});
+$('map').addEventListener('touchend', () => { pinch = null; });
 const tip = $('tip');
 $('map').addEventListener('mousemove', e => { const t = e.target.closest('circle'); if(!t){ tip.style.display = 'none'; return; } const r = DATA.find(x => x.key === t.dataset.k); tip.textContent = `${r.name} · ${r.d != null ? r.d.toFixed(2) + ' Mpc' : ''} · ${r.hst ? 'HST' : ''}${r.hst && r.jwst ? '+' : ''}${r.jwst ? 'JWST' : ''}${!r.hst && !r.jwst ? 'no HST/JWST' : ''}`; tip.style.display = 'block'; tip.style.left = (e.clientX + 12) + 'px'; tip.style.top = (e.clientY + 12) + 'px'; });
 $('map').addEventListener('mouseleave', () => tip.style.display = 'none');
-$('map').addEventListener('click', e => { const t = e.target.closest('circle'); if(t){ showDetail(t.dataset.k); drawPoints(new Set(filtered().map(r => r.key))); } });
+$('map').addEventListener('click', e => { if(suppressClick){ suppressClick = false; return; } const t = e.target.closest('circle'); if(t){ showDetail(t.dataset.k); drawPoints(new Set(filtered().map(r => r.key))); } });
 $('tb').addEventListener('click', e => { const tr = e.target.closest('tr'); if(tr){ showDetail(tr.dataset.k); drawPoints(new Set(filtered().map(r => r.key))); } });
 $('tb').addEventListener('keydown', e => { if(e.key === 'Enter'){ const tr = e.target.closest('tr'); if(tr) showDetail(tr.dataset.k); } });
 document.querySelectorAll('th').forEach(th => th.addEventListener('click', () => { const k = th.dataset.k; if(sortK === k) sortDir *= -1; else { sortK = k; sortDir = ['name', 'tbl', 'hf', 'jf', 'pms', 'roman', 'euclid'].includes(k) ? 1 : (k === 'd' ? 1 : -1); } render(); }));
