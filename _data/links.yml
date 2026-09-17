@@ -5,6 +5,10 @@
   url: "https://ui.adsabs.harvard.edu/search/q=((author%3A(%22Warfield%2C%20Jack%22))%20AND%20year%3A2018-9999)&sort=date%20desc%2C%20bibcode%20desc"
   #note: The authoritative, always-current list.
 
+- title: Census of Local Volume Galaxies with Space-Based Imaging
+  url: "https://jackwarfield.com/localvolume/local_volume_census.html"
+  note: See the HST, JWST, Roman, and Euclid data that is/will be available for galaxies in the Local Volume Database.
+
 - title: GitHub
   url: https://github.com/jackwarfield
   #note: Code.
