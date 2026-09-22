@@ -38,9 +38,19 @@ categories:
 # Newest first within each category.
 entries:
   # --- First author and highlighted --------------------------------------
+  - title: Space-Based Proper Motion Measurements in the Era of JWST
+    authors: ["J. T. Warfield"]
+    year: 2026
+    journal: PhD Dissertation, University of Virginia
+    doi: 10.18130/6r9c-2s14
+    category: first
+    links:
+      - label: Libra
+        url: https://libraetd.lib.virginia.edu/public_view/oid-d7nvpqhabivs73n69og0
+
   - title: The Proper Motion of Draco II with HST using Multiple Reference Frames and Methodologies
     authors: ["J. T. Warfield", "K. A. McKinnon", "S. T. Sohn", "et al."]
-    year: 2025
+    year: 2026
     journal: ApJ
     volume: 998
     page: 3
@@ -133,6 +143,44 @@ entries:
         url: https://ui.adsabs.harvard.edu/abs/2023jwst.prop.4570W/abstract
 
   # --- Co-authored --------------------------------------------------------
+  - title: "From observing strategies to velocity dispersion bias: forward modeling unresolved binaries in ultra-faint dwarf galaxies"
+    authors: ["X. Ou", "A. B. Pace", "N. Kallivayalil", "et al."]
+    year: 2026
+    preprint: "2609.19407"
+    status: submitted to ApJ
+    doi: 10.48550/arXiv.2609.19407
+    bibcode: 2026arXiv260919407O
+    category: other
+
+  - title: The JWST Resolved Stellar Populations Early Release Science Program. IX. The RR Lyrae Population in WLM with HST and JWST
+    authors: ["C. M. Slaughter", "E. D. Skillman", "A. Savino", "et al."]
+    year: 2026
+    journal: ApJ
+    volume: 1006
+    page: 253
+    preprint: "2602.21205"
+    doi: 10.3847/1538-4357/ae4c8c
+    bibcode: 2026ApJ..1006..253S
+    category: other
+
+  - title: Constraining the shape of dark matter haloes using only starlight II. Tests of the technique with objects of known gravitational potential
+    authors: ["J. Sánchez Almeida", "A. R. Plastino", "S. Guerra Arencibia", "N. Kallivayalil", "J. T. Warfield"]
+    year: 2026
+    preprint: "2607.27001"
+    status: accepted to A&A
+    doi: 10.48550/arXiv.2607.27001
+    bibcode: 2026arXiv260727001S
+    category: other
+
+  - title: Hubble Astrometry for the Local Group and Beyond in the 2030s
+    authors: ["S. T. Sohn", "P. Bennet", "K. A. McKinnon", "et al."]
+    year: 2026
+    preprint: "2605.24191"
+    status: HST 2030s roadmap white paper
+    doi: 10.48550/arXiv.2605.24191
+    bibcode: 2026arXiv260524191S
+    category: other
+
   - title: "The abundance and properties of the lowest luminosity dwarf galaxies around the Milky Way: Insights from Semi-Analytic Models"
     authors: ["N. Ahvazi", "A. B. Pace", "C. T. Garling", "et al."]
     year: 2025

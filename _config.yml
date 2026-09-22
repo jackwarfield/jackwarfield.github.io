@@ -24,7 +24,7 @@ url: https://jackwarfield.com
 email: warfield@berkeley.edu
 photo: /images/jack-at-aas.jpg
 photo_alt: Jack Warfield speaking at AAS 241 in Seattle, January 2023.
-cv: /docs/JackWarfield_CV_Aug2026.pdf
+cv: /docs/JackWarfield_CV_Sept2026.pdf
 
 # Short facts shown on the home page. Add, remove, or reorder freely.
 facts:
@@ -51,7 +51,7 @@ nav:
   - title: Publications
     url: /publications/
   - title: CV
-    url: /docs/JackWarfield_CV_Aug2026.pdf
+    url: /docs/JackWarfield_CV_Sept2026.pdf
   - title: Links
     url: /otherpages/
   - title: Blog
